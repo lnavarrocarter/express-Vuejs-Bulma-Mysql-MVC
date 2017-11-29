@@ -1,8 +1,7 @@
 // 
 const express = require('express');
 const bodyParser = require('body-parser');
-const config  = require('./config');
-const Ctrl = require('./controller')
+const Ctrl = require('./controller');
 
 const setupRouter = function () {
     const bodyParserEncoder = bodyParser.urlencoded({
@@ -10,16 +9,19 @@ const setupRouter = function () {
     });
     const router = express.Router();
     const CtrlUser = new Ctrl.UserController();
-    
-    //Oauth2
-    router.get('/getallusers', (req, res) => {  
-        res.json(CtrlUser.getallusers()); 
+
+    //API
+    router.get('/', (req, res) => {  
+        res.json({
+            body : 'Esta es la API de aprovicionamiento para el uso de la plataforma con mysql'
+        }); 
     });
 
-    router.post('/postexample', bodyParserEncoder, (req, res) => {
-        res.json({
-            body: req.body
+    router.get('/getallusers', (req, res) => {          
+        CtrlUser.getallusers().then((response) => {
+            res.json(response);
         });
+         
     });
 
     return router;

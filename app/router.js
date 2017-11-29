@@ -40,7 +40,7 @@ module.exports.init = (app, config) => {
             head: {
                 meta: [
                     { script: vueScript },
-                    { style: 'assets/rendered/style.css' },
+                    { style: 'http://localhost:9000/assets/rendered/style.css' },
                     { style: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' },
                     { style: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css' },
                     { style: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css.map' },
@@ -57,7 +57,7 @@ module.exports.init = (app, config) => {
 
     //Api
     const oauth2 = oauth2Api.init();
-    app.use('/oauth2', oauth2);
+    app.use('/api', oauth2);
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({

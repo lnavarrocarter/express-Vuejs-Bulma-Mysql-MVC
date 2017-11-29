@@ -25,20 +25,6 @@ if (cluster.isMaster && config.env !== 'development') {
         });
     }
 } else {
-    //Verificar conexion a la base de datos.
-    const connection = mysql.createConnection({
-        host     : config.host,
-        user     : config.user,
-        password : config.pass,
-        database : config.database
-    })
-    connection.connect((err) => {
-        if(!err){
-            console.warn(`Mysql connect ${config.host} worked server listener database ${config.database}`);
-        }else{
-            console.warn(`Mysql ERROR connect ${config.host} don't worked server listener database ${config.database}`)
-        }
-    })
     app.listen(config.port, () => {
         console.warn(`Worker ${process.pid} running a ${config.env} server listening on port ${config.port}`);
     });
