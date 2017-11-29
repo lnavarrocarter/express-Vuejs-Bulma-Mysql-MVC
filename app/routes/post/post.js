@@ -21,7 +21,7 @@ module.exports.default = (router) => {
         };
         const vueOptions = {
             head: {
-                title: 'Post example'
+                title: 'GET example'
             }
         };
         res.renderVue('../components/post/post', data, vueOptions);

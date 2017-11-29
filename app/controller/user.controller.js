@@ -1,6 +1,5 @@
 const Services = require('./../services');
 
-
 class UserController{
     constructor(){
         this.mysql = new Services.Database();
